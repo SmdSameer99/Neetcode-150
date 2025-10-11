@@ -2,6 +2,7 @@
 
 ## Topics Covered
 1. Arrays & Hashing
+    - Contains Duplicate
 2. Two Pointers
 3. Sliding Window
 4. Stack
