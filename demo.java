@@ -1,18 +1,12 @@
 public class demo {
      public long removeZeros(long num) {
-        long numLen = String.valueOf(num).length();
-        if(numLen == 1) return num;
-        long result  = 0;
-        for(long i=numLen-1; i>0; i--){
-            
-            long digit = (num / (int)Math.pow(10, i)) % 10;
-           
-            if(digit == 0) continue;
-            // System.out.println( digit + " at position " + i);
-            result *= 10 ;
-            result += digit;
+        String s = String.valueOf(num);
+        StringBuilder sb = new StringBuilder();
+        for (char c : s.toCharArray()) {
+            if (c != '0') sb.append(c);
         }
-        return result;
+        if (sb.length() == 0) return 0L;
+        return Long.parseLong(sb.toString());
     }
     public static void main(String[] args) {
         long num = 1023450;
