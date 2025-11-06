@@ -1,3 +1,5 @@
+import java.util.HashMap   ;
+
 class TwoSum {
     public int[] twoSum(int[] nums, int target) {
         
@@ -16,11 +18,29 @@ class TwoSum {
         return nums;
     }
 
+    public static int[] twoSumOptimized(int[] nums, int target) {
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        for(int i=0; i<nums.length; i++){
+            int remainderDiffernce  = target - nums[i];
+            if(map.containsKey(remainderDiffernce)){
+                return new int[] {map.get(remainderDiffernce), i};
+            }
+            map.put(nums[i], i);
+        }
+        return new int[] {-1, -1};
+    }
+
+
     public static void main(String[] args) {
         TwoSum obj = new TwoSum();
         int nums[] = {3, 2, 4};
         int target = 6;
         int ans[] = obj.twoSum(nums, target);
         System.out.println(ans[0]+" "+ans[1]);
+
+        int ansOptimized[] = twoSumOptimized(nums, target);
+        System.out.println(ansOptimized[0]+" "+ansOptimized[1]);
     }
 }

@@ -1,54 +1,44 @@
+import java.util.List;
+
 public class demo {
-     public long removeZeros(long num) {
-        String s = String.valueOf(num);
-        StringBuilder sb = new StringBuilder();
-        for (char c : s.toCharArray()) {
-            if (c != '0') sb.append(c);
-        }
-        if (sb.length() == 0) return 0L;
-        return Long.parseLong(sb.toString());
-    }
+
+
     public static void main(String[] args) {
-        long num = 1023450;
-        long result = 0;
+        int [] numbers = {1, 4, 2, 5};
+    
+        fineMissingNumber(numbers);
+    }
 
-        // while (num > 0) {
-        //     // if((num%10) != 0 ){
-        //     //     result *= 10 ; 
-        //     //     result += num % 10;
-                               
-        //     // }
-            
-        //     // num /= 10;
+    private static List<Integer> fineMissingNumber(int[] numbers) {
+    
+        List<Integer> missingNumbers = new java.util.ArrayList<>();
+        int max = 0, min = 0;
+        for (int i = 0; i < numbers.length; i++) {
+           if(numbers[i] > max){
+               max = numbers[i];
+           }
+           if(numbers[i] < min || min == 0){
+               min = numbers[i];
+           }
+        }
 
-        //     System.out.println(num % 10);
-        //     num /= 10;
-        // }
+        
+        System.out.println("Max: " + max + " Min: " + min);
 
-        // for(int i=0; num>0; i++){
-        //      System.out.println(num % 10 + " at position " + i);
-        //     num /= 10;
-        // }
-        // System.out.println("Sum of digits: " + result);
+        for(int j = min; j <= max; j++){
+            boolean found = false;
+            for(int k = 0; k < numbers.length; k++){
+                if(numbers[k] == j){
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                missingNumbers.add(j);
+                System.out.println("Missing number: " + j);
+            }
+        }
 
-
-        //Sloving method 2
-        // System.out.println( String.valueOf(num).length() );
-
-        // int numLen = String.valueOf(num).length();
-        // for(int i=numLen-1; i>0; i--){
-            
-        //     long digit = (num / (int)Math.pow(10, i)) % 10;
-           
-        //     if(digit == 0) continue;
-        //     System.out.println( digit + " at position " + i);
-        //     result *= 10 ;
-        //     result += digit;
-        // }
-
-        // System.out.println(result);
-
-        //solving method 3
-        System.out.println(new demo().removeZeros(11));
+        return missingNumbers;
     }
 }
