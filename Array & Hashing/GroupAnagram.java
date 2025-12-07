@@ -2,7 +2,7 @@ import java.util.List;
 
 public class GroupAnagram {
     
-    public List<List<String>> GroupAnagram(String[] strs) {
+    public List<List<String>> groupAnagram(String[] strs) {
         int count = 0;
         for (String string : strs) {
             System.out.println(string);
@@ -17,7 +17,7 @@ public class GroupAnagram {
     public static void main(String[] args) {
         GroupAnagram obj = new GroupAnagram();
         String strs[] = {"eat","tea","tan","ate","nat","bat"};
-        List<List<String>> ans = obj.GroupAnagram(strs);
+        List<List<String>> ans = obj.groupAnagram(strs);
         System.out.println(ans);
     }
 }
